@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vue.js TODO app</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="newItemTitle"> 
+        <button @click="clickAcceptButton">Accept</button>
+        <div v-for="item in items" v-bind:key="item.id">
+            <h1>{{item.title}}</h1>
+        </div>
+    </div>
+    
+    <script> 
+        new Vue({ 
+            
+    el: '#app',
+
+    data: {
+        newItemTitle: "wpisz nowe zadanie",
+        items: [
+            {
+                title: "first title",
+                isDone: false,
+                id: 1
+            },
+            {
+                title: "second title",
+                isDone: false,
+                id: 2
+            }
+        ]
+    }, 
+
+    methods: {
+        clickAcceptButton(){
+                this.items.push({
+                title: this.newItemTitle,
+                isDone: false,
+                id: Math.random()})
+}
+    }
+        })
+
+    </script> 
+</body>
+</html>
